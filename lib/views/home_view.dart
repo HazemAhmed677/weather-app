@@ -19,9 +19,9 @@ class HomeView extends StatelessWidget {
             toolbarHeight: 70,
             shadowColor: Colors.black,
             elevation: 10,
-            title: Padding(
-              padding: const EdgeInsets.only(left: 30),
-              child: const Text('Weather App'),
+            title: const Padding(
+              padding: EdgeInsets.only(left: 30),
+              child: Text('Weather App'),
             ),
             backgroundColor: kGetWeatherColor(
                 BlocProvider.of<GetWeatherCubit>(context).weatherModel?.status),
@@ -29,6 +29,7 @@ class HomeView extends StatelessWidget {
               IconButton(
                 iconSize: 30,
                 splashColor: Colors.black,
+                hoverColor: Colors.black,
                 onPressed: () => {
                   Navigator.of(context).push(
                     MaterialPageRoute(
