@@ -46,10 +46,10 @@ class _SearchViewState extends State<SearchView> {
                   suffixIcon: Padding(
                     padding: const EdgeInsets.only(right: 5),
                     child: IconButton(
-                      onPressed: () {
+                      onPressed: () async {
                         if (formKey.currentState!.validate()) {
                           formKey.currentState!.save();
-                          BlocProvider.of<GetWeatherCubit>(context)
+                          await BlocProvider.of<GetWeatherCubit>(context)
                               .getWeather(cityName: input!);
                           Navigator.pop(context);
                           autoValidateMode = AutovalidateMode.disabled;

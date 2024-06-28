@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app/cubits/get_weather_cubit/weather_states.dart';
 import 'package:weather_app/models/weather_model.dart';
@@ -6,11 +7,17 @@ import 'package:weather_app/services/wheather_service.dart';
 class GetWeatherCubit extends Cubit<WeatherState> {
   GetWeatherCubit() : super(WeatherIntialState());
   WeatherModel? weatherModel;
+  late String errorMsg;
   getWeather({required String cityName}) async {
     try {
       weatherModel = await WeatherService().getWeather(cityName: cityName);
       emit(WeatherLoadedState());
     } catch (e) {
+      if (e.toString().contains('400') || e.toString().contains('Invalid')) {
+        errorMsg = 'No conutry with this name';
+      } else {
+        errorMsg = 'Oops, sever isn\'t available for now, try later';
+      }
       emit(WeatherFalierState());
     }
   }

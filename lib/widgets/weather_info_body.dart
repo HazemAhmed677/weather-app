@@ -9,7 +9,6 @@ class WeatherInfoBody extends StatelessWidget {
   const WeatherInfoBody({super.key});
   @override
   Widget build(BuildContext context) {
-    ;
     return BlocBuilder<GetWeatherCubit, WeatherState>(
         builder: (context, state) {
       if (state is WeatherLoadedState) {
@@ -94,9 +93,9 @@ class WeatherInfoBody extends StatelessWidget {
           ),
         );
       } else if (state is WeatherFalierState) {
-        return const Center(
+        return Center(
           child: Text(
-            'Sorry weather for this country  not available for now ',
+            'Sorry weather of ${BlocProvider.of<GetWeatherCubit>(context).weatherModel!.cityName} not available for now ',
           ),
         );
       } else {

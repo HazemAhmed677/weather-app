@@ -12,13 +12,8 @@ class WeatherService {
           .get('$baseURL/forecast.json?key=$apiKey&q=$cityName&days=1');
       WeatherModel weatherModel = WeatherModel.fromJson(response.data);
       return weatherModel;
-    } on DioException catch (e) {
-      // stauts or response code hundeled by Dio package
-      final String msg = (e.response?.data['error']['message']) ??
-          "oops there something wrong, try later";
-      throw (msg);
     } catch (e) {
-      throw ('oops there something wrong, try later');
+      throw (e.toString());
     }
   }
 }
