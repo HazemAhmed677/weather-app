@@ -79,9 +79,10 @@ class _SearchViewState extends State<SearchView> {
   Future<void> triggerGetWeatherCubit(BuildContext context) async {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
+
+      Navigator.pop(context);
       await BlocProvider.of<GetWeatherCubit>(context)
           .getWeather(cityName: input!);
-      Navigator.pop(context);
       autoValidateMode = AutovalidateMode.disabled;
     } else {
       autoValidateMode = AutovalidateMode.always;

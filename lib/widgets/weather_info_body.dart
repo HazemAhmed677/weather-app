@@ -11,7 +11,7 @@ class WeatherInfoBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<GetWeatherCubit, WeatherState>(
         builder: (context, state) {
-      if (state is WeatherLoadedState) {
+      if (state is WaatherSuccessState) {
         WeatherModel weatherModel =
             BlocProvider.of<GetWeatherCubit>(context).weatherModel!;
         return Container(

@@ -50,7 +50,13 @@ class HomeView extends StatelessWidget {
             builder: (context, state) {
               if (state is WeatherIntialState) {
                 return const NoWeatherBody();
-              } else if (state is WeatherLoadedState) {
+              } else if (state is WeatherLoadingState) {
+                return const Center(
+                  child: CircularProgressIndicator(
+                    color: Colors.blue,
+                  ),
+                );
+              } else if (state is WaatherSuccessState) {
                 return const WeatherInfoBody();
               } else if (state is WeatherFalierState) {
                 return ErrorMsg(
