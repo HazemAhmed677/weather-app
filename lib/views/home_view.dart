@@ -57,7 +57,9 @@ class HomeView extends StatelessWidget {
                   ),
                 );
               } else if (state is WaatherSuccessState) {
-                return const WeatherInfoBody();
+                return WeatherInfoBody(
+                  weatherModel: state.weatherModel,
+                );
               } else if (state is WeatherFalierState) {
                 return ErrorMsg(
                     errorMsg:

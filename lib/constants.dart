@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 MaterialColor kGetWeatherColor(String? condition) {
-  if (condition == null) return Colors.grey;
+  if (condition == null) return Colors.blue;
   switch (condition) {
     case 'Sunny':
     case 'Clear':

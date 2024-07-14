@@ -11,7 +11,7 @@ class GetWeatherCubit extends Cubit<WeatherState> {
     try {
       emit(WeatherLoadingState());
       weatherModel = await WeatherService().getWeather(cityName: cityName);
-      emit(WaatherSuccessState());
+      emit(WaatherSuccessState(weatherModel: weatherModel!));
     } catch (e) {
       if (e.toString().contains('400') || e.toString().contains('Invalid')) {
         errorMsg = 'No conutry with this name';
